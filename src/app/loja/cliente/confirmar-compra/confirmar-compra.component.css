@@ -1,0 +1,51 @@
+.quantidade {
+    width: 60px;
+}
+
+.quantidade-box{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    gap: 2rem;
+}
+
+.espaco {
+    margin-bottom: 2rem;
+}
+
+.inputs {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-direction: column;
+}
+
+.input-m {
+    width: 250px;
+}
+
+.acoes {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+}
+
+.aviso {
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-confirmar {
+    color: #c21a8f;
+    border: solid 1px;
+    border-color: #c21a8f;
+}
+
+button {
+    font-size: 12px;
+    border-radius: 20px;
+    min-width: 90px;
+}

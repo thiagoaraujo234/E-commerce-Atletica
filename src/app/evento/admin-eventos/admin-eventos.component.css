@@ -1,0 +1,114 @@
+.block {
+  display: block;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mw-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mw-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.border {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.rounded-t-8 {
+  border-radius: 8px ;
+}
+
+.hidden {
+  display: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.justify {
+  text-align: justify;
+}
+
+/* Própio */
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+  max-width: 70px;
+}
+
+table {
+  width: 100%;
+}
+
+mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.toolbar-center {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.mat-expansion-panel {
+  margin-right: 10px;
+  box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+  padding: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.toolbar-center {
+  flex: 1 1 auto;
+  text-align: center;
+}

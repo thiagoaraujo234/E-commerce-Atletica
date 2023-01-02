@@ -1,0 +1,103 @@
+<h1 mat-dialog-title class="center">Cadastro de Usuário</h1>
+<form [formGroup]="formUsuario">
+
+    <button style="width: 100%;" mat-button color="primary" (click)="fileInput.click()">
+        <!-- <mat-icon>image_search</mat-icon> -->
+        <div class="imgcontainer">
+            <img *ngIf="preview" [src]="preview" class="avatar">
+            <img *ngIf="!preview" src="assets/images/default_user.jpg" class="avatar">
+        </div>
+    </button>
+
+    <input #fileInput formControlName="imagemFile" hidden type="file" accept="image/*"
+        (change)="handleFile($event.target)">
+
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Nome</mat-label>
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input cdkFocusInitial matInput formControlName="nome">
+            <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+                <div *ngIf="nome.errors?.['required']">
+                    Campo obrigatório.
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix>mail_outline</mat-icon>
+            <input cdkFocusInitial matInput formControlName="email">
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['email']">
+                    Informe um email válido.
+                </div>
+                <div *ngIf="email.errors?.['required']">
+                    Campo obrigatório.
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Senha</mat-label>
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input cdkFocusInitial matInput formControlName="senha">
+            <mat-error *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+                <div *ngIf="senha.errors?.['minlength']">
+                    Mínimo 6 caracteres.
+                </div>
+                <div *ngIf="senha.errors?.['required']">
+                    Campo obrigatório.
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>DDD</mat-label>
+            <mat-icon matPrefix>local_phone</mat-icon>
+            <input #input maxlength="2" cdkFocusInitial matInput formControlName="codArea">
+            <mat-hint align="end">{{input.value.length}}/2</mat-hint>
+            <mat-error *ngIf="codArea.invalid && (codArea.dirty || codArea.touched)">
+                <div *ngIf="codArea.errors?.['minlength']">
+                    O tamanho mínimo é 2 números.
+                </div>
+                <div *ngIf="codArea.errors?.['required']">
+                    informe no seguinte formato 'DDD'+ '9' + 'numero'.
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Telefone</mat-label>
+            <mat-icon matPrefix>local_phone</mat-icon>
+            <input #input maxlength="9" cdkFocusInitial matInput formControlName="telefone">
+            <mat-hint align="end">{{input.value.length}}/9</mat-hint>
+            <mat-error *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)">
+                <div *ngIf="telefone.errors?.['minlength']">
+                    O tamanho mínimo é 9 números.
+                </div>
+                <div *ngIf="telefone.errors?.['required']">
+                    informe no seguinte formato 'DDD'+ '9' + 'numero'.
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-content formGroupName="cidade">
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Cidade</mat-label>
+            <input cdkFocusInitial matInput formControlName="nome" readonly="true">
+            <mat-icon matPrefix>location_city</mat-icon>
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="openConsultaCidadeDialog()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button color="primary" (click)="submit()">Salvar</button>
+        <button mat-raised-button (click)="onCancel()">Cancelar</button>
+    </div>
+</form>

@@ -1,0 +1,69 @@
+
+<div class="titulo">
+  <app-navbar></app-navbar>
+  <h2>Todos os Produtos Cadastrados</h2>
+</div>
+<div class="main-box">
+    <div class="filtro-box">
+        <mat-form-field appearance="outline" class="filtro">
+            <mat-label>Filtro</mat-label>
+            <input matInput autocomplete="off" (keyup)="applyFilter($event)" placeholder="Ex. caneca" #input>
+        </mat-form-field>
+
+        <button mat-stroked-button (click)="openDialogCadastrar()">Cadastrar produto</button>
+    </div>
+    <table mat-table [dataSource]="produtos" class="tabela">
+
+        <ng-container matColumnDef="imagemUrl">
+        <th mat-header-cell *matHeaderCellDef> Imagem </th>
+          <td mat-cell *matCellDef="let data">
+            <div>
+                <img *ngIf="data.imagem" class="imagem" [src]="getImagem(data.imagem)" alt="Imagem padrão">
+                <img *ngIf="!data.imagem" class="imagem" src="assets/imagens/default-placeholder.png" alt="Imagem do produto">
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let data"> {{data.nome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="preco">
+            <th mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let data"> {{data.preco}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="desconto">
+            <th mat-header-cell *matHeaderCellDef> Desconto </th>
+            <td mat-cell *matCellDef="let data"> {{data.desconto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let data"> {{data.quantidade}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="marca">
+            <th mat-header-cell *matHeaderCellDef> Marca </th>
+            <td mat-cell *matCellDef="let data"> {{data.marca}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipos">
+            <th mat-header-cell *matHeaderCellDef> Tipos </th>
+            <td mat-cell *matCellDef="let data"> {{data.tipos}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef> Ação </th>
+            <td mat-cell *matCellDef="let data">
+                <button mat-icon-button>
+                    <mat-icon (click)="openDialogAtualizar(data)">edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colunas; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+    </table>
+</div>

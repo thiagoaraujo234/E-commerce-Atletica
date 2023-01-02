@@ -1,0 +1,23 @@
+<div class="main-box">
+    <p class="ff-inter espaco"><b>Nome do produto: </b>{{produto.nome}}</p>
+
+    <p class="ff-inter espaco"><b>Preço total: </b>R${{produto.preco.toFixed(2)}}</p>
+
+    <div class="inputs espaco">
+        <p class="aviso">O email digitado aqui deve ser o mesmo que o do pagamento</p>
+        <mat-form-field appearance="outline" class="input-m">
+            <mat-label>Email</mat-label>
+            <input matInput autocomplete="off" placeholder="Digite seu email" (keyup)="pegaEmail($event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-m">
+            <mat-label>Endereço</mat-label>
+            <input matInput autocomplete="off" placeholder="Digite seu endereço" (keyup)="pegaEndereco($event)">
+        </mat-form-field>
+    </div>
+
+    <div class="acoes">
+        <button mat-flat-button mat-dialog-close class="ff-inter-bold">CANCELAR</button>
+        <button mat-stroked-button class="ff-inter-bold botao-confirmar" (click)="enviaCompra()">CONFIRMAR</button>
+    </div>
+</div>

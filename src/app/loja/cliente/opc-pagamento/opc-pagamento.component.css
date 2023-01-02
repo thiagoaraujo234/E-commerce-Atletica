@@ -1,0 +1,70 @@
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.conteudo-credito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.conteudo-icone {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preco {
+    font-size: 20px;
+    color: #c21a8f;
+    font-weight: bold;
+}
+
+.promocao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.separacao {
+    padding-bottom: 15px;
+    border: solid;
+    border-color: #c21a8f;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.icone {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    color: #c21a8f;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+}
+
+.full {
+    width: 100%;
+}
+
+.backCinza {
+    background-color: lightgray;
+}

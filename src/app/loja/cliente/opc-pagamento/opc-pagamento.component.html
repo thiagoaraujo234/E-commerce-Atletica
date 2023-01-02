@@ -1,0 +1,83 @@
+<div mat-dialog-content>
+  <h2>FORMAS DE PAGAMENTO</h2>
+
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>credit_card</mat-icon>
+        <label>Crédito</label>
+      </ng-template>
+      <div class="conteudo-credito">
+        <p class="backCinza full" *ngIf="produto.desconto != 0">À vista - Até {{produto.desconto}}% de desconto - Total: R${{ oferta }} </p>
+        <p class="backCinza full" *ngIf="produto.desconto == 0">À vista - Total: R${{ produto.preco }} </p>
+        <p class="full">2x sem juros de R${{(produto.preco/2).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="backCinza full">3x sem juros de R${{(produto.preco/3).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="full">4x sem juros de R${{(produto.preco/4).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="backCinza full">5x sem juros de R${{(produto.preco/5).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="full">6x sem juros de R${{(produto.preco/6).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="backCinza full">7x sem juros de R${{(produto.preco/7).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="full">8x sem juros de R${{(produto.preco/8).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="backCinza full">9x sem juros de R${{(produto.preco/9).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="full">10x sem juros de R${{(produto.preco/10).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="backCinza full">11x sem juros de R${{(produto.preco/11).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+        <p class="full">12x sem juros de R${{(produto.preco/12).toFixed(2)}} - Total: R$ {{produto.preco}}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>qr_code_scanner</mat-icon>
+        <label>PIX</label>
+      </ng-template>
+      <div class="separacao">
+        <div class="conteudo">
+          <p class="preco ff-inter" *ngIf="produto.desconto != 0">R$ {{oferta}}</p>
+          <p class="preco ff-inter" *ngIf="produto.desconto == 0">R$ {{produto.preco}}</p>
+        </div>
+        <div class="promocao">
+          <p class="ff-inter" *ngIf="produto.desconto != 0">À vista no PIX com <b>{{produto.desconto}}% OFF</b></p>
+        </div>
+      </div>
+      <div class="conteudo-icone">
+        <mat-icon class="icone">mobile_friendly</mat-icon>
+        <p class="ff-inter">Pague com o PIX e priorizamos <br> o despacho em 1 hora!</p>
+      </div>
+      <div class="conteudo">
+        <p class="ff-inter">Veja como é fácil pagar com o PIX</p>
+      </div>
+      <div class="video">
+        <iframe
+        width="480"
+        height="270"
+        src="https://www.youtube.com/embed/uO-lrssBG5Y"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>request_page</mat-icon>
+        <label>Boleto</label>
+      </ng-template>
+      <div class="separacao">
+        <div class="conteudo">
+          <p class="preco" *ngIf="produto.desconto == 0">R$ {{produto.preco}}</p>
+          <p class="preco" *ngIf="produto.desconto != 0">R$ {{oferta}}</p>
+        </div>
+        <div class="promocao">
+          <p class="ff-inter" *ngIf="produto.desconto != 0">À vista no Boleto com <b>{{produto.desconto}}% OFF</b></p>
+        </div>
+      </div>
+      <div class="conteudo-icone">
+        <mat-icon class="icone">event_available</mat-icon>
+        <p class="ff-inter">O prazo de pagamento via boleto <br> bancário é de 2 dias corridos.</p>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close cdkFocusInitial>OK</button>
+</div>

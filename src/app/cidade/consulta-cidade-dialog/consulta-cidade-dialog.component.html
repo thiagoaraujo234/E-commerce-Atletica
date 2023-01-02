@@ -1,0 +1,42 @@
+<mat-card>
+
+  <mat-toolbar>
+    <span class="toolbar-center">Consulta de Cidade</span>
+  </mat-toolbar>
+
+  <mat-form-field appearance="standard" style="width: 100%;">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)] = "valor"  placeholder="Ex. palmas" #input >
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="onFind()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="cidades" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let cidade"> {{cidade.nome}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="sigla">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let cidade"> {{cidade.estado.nome}} - {{cidade.estado.sigla}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="acao">
+      <th mat-header-cell *matHeaderCellDef> Ação </th>
+      <td mat-cell *matCellDef="let cidade">
+        <button mat-icon-button color="primary">
+          <mat-icon (click)="onSelect(cidade)">done</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

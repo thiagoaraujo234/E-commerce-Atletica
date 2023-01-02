@@ -1,0 +1,55 @@
+<h1 mat-dialog-title class="center">Cadastro de Estado</h1>
+<form #myForm="ngForm">
+  <div mat-dialog-content>
+    <mat-form-field  appearance="fill" style="width: 100%;">
+      <mat-label>Nome</mat-label>
+      <input 
+        name="nome"
+        required
+        minlength="4"
+        maxlength="60"
+        cdkFocusInitial 
+        #sigla="ngModel"
+        matInput 
+        [(ngModel)]="data.nome">
+        <mat-error *ngIf="sigla.invalid && (sigla.dirty || sigla.touched)">
+          <div *ngIf="sigla.errors?.['required']">
+            Campo obrigatório.
+          </div>
+          <div *ngIf="sigla.errors?.['minlength']">
+            O tamanho mínimo é 4 letras.
+          </div>
+        </mat-error>
+    </mat-form-field>
+
+
+  </div>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Sigla</mat-label>
+      <input name="sigla" 
+          required
+          minlength="2"
+          maxlength="4"
+          #sigla="ngModel"
+          matInput 
+          [(ngModel)]="data.sigla">
+      <mat-error *ngIf="sigla.invalid && (sigla.dirty || sigla.touched)">
+        <div *ngIf="sigla.errors?.['required']">
+          Campo obrigatório.
+        </div>
+        <div *ngIf="sigla.errors?.['minlength']">
+          O tamanho mínimo é 2 letras.
+        </div>
+
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="center">
+      <button mat-raised-button 
+        color="primary" 
+        [disabled]="myForm.invalid"
+        [mat-dialog-close]="data">Salvar</button>
+      <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </div>
+  </form>

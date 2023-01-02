@@ -1,0 +1,28 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.block {
+  display: block;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mw-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.footer {
+  z-index: 1;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}

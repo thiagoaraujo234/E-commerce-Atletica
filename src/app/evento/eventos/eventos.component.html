@@ -1,0 +1,56 @@
+<div class="mw-20 justify">
+  <mat-toolbar class="w-full mt-2">
+    <span class="toolbar-center">Eventos</span>
+    <button *ngIf="usuario.groups && usuario.groups.indexOf('Admin') >= 0" mat-button style="color: #c21a8f;" routerLink="/evento/admin" routerLinkActive="botao-ativo">Admin</button>
+  </mat-toolbar>
+
+  <mat-card *ngIf="!(eventos) || eventos.length < 1" class="shadow-atletica">
+    <mat-card-header>
+      <mat-card-title>Nenhum evento encontrado</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Tente recarregar a pagina ou testar sua conneção com a internet.</p>
+      <p></p>
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>  
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+  </mat-card>
+
+  <mat-tab-group color="accent" [selectedIndex]="selected" (selectedIndexChange)="selected = $event">
+    <mat-tab class="rounded-t-8 border" 
+      label="{{ evento.nome }}" 
+      *ngFor="let evento of eventos; let index = index">
+
+      <!-- <a matLine href="..."> -->
+      <mat-card class="example-card mw-auto block">
+        <mat-card-header>
+          <mat-card-title>{{ evento.nome }}</mat-card-title>
+          <mat-card-subtitle>{{ formataData(evento.data) }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="items-center container-image">
+          <img mat-card-image class="example-header-image mw-auto" *ngIf="evento.nomeImagem" [src]="getImagem(evento.nomeImagem)" alt="Photo of a Shiba Inu">
+          <img mat-card-image class="example-header-image mw-auto" *ngIf="!evento.nomeImagem" src="assets/images/default_evento.png" >
+        </div>
+        <mat-card-content>
+          <p>
+            {{ evento.descricao }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button [disabled]="selected <= 0" (click)="selected = selected -1">Anterior</button>
+          <button mat-button class="text-atletica" (click)="onChange(index)">Ver mais</button>
+          <button mat-button [disabled]="selected >= eventos.length -1" (click)="selected = selected + 1">Próximo</button>
+        </mat-card-actions>
+        <!-- <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions> -->
+      </mat-card>
+      <!-- </a> -->
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<!-- <h1 *ngIf="eventos != null">Hello world</h1> -->

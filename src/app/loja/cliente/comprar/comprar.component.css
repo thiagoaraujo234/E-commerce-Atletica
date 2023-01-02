@@ -1,0 +1,155 @@
+.mural {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 2rem;
+  margin-top: 5%;
+}
+
+.mural-tipo-quant{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: left;
+  align-items: left;
+  margin-top: 15px;
+}
+
+.mural-tipo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: left;
+  align-items: center;
+}
+
+.statusVermelho {
+  color: red;
+}
+
+.statusVerde {
+  color: green;
+}
+
+.example-card {
+  position: relative;
+  margin-bottom: 5%;
+  min-width: 300px;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px 0px lightgray;
+  display: flex;
+  align-items: center;
+}
+
+.botoes-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: rgba(194, 26, 143, 0.25);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+  transition: ease 0.5s;
+}
+.botoes-img:hover {
+  color: red;
+}
+
+.oferta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(0, 179, 0, 0.25);
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 10px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.quantidade {
+  width: 60px;
+}
+
+.div-ajuste {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  justify-content: left;
+  align-items: center;
+}
+
+.img-produto {
+  width: 100%;
+  min-width: 100px;
+  max-width: 500px;
+}
+@media (max-width: 920px) {
+  .img-produto  {
+      width: 300px;
+  }
+}
+
+.nome-produto{
+  color: black;
+  margin-top: 2%;
+}
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.produto-detalhes{
+  margin-top: 2%;
+}
+
+.botao-comprar {
+  margin-top: 5%;
+  border-radius: 5px;
+  background-color: #c21a8f;
+  color: white;
+  transition: ease 0.5s;
+  width: 100%;
+}
+.botao-comprar:hover {
+  background-color: #3a0229;
+}
+.botao-comprar:disabled {
+  background-color: lightgray;
+}
+
+.preco {
+  font-size: 20px;
+  color: #c21a8f;
+  font-weight: bold;
+}
+
+.aba-compra {
+  width: 45%;
+  min-width: 300px;
+  max-width: 500px;
+}
+@media (max-width: 1199px) {
+  .aba-compra  {
+      width: 300px;
+  }
+}
+
+.cep {
+  margin-top: 10%;
+}
+
+.botao-cep {
+  margin-left: 10px;
+  color: #c21a8f;
+  border-color: #c21a8f;
+  border-style: solid;
+}
+
+.input-cep {
+  color: #c21a8f;
+}

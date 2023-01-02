@@ -1,0 +1,97 @@
+.h-10 {
+  height: 10px;
+}
+
+.w-10 {
+  width: 10px;
+}
+
+.h-20-vh {
+  height: 50vh;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.max-h-full {
+  max-height: 100%;
+}
+
+.max-h-30 {
+  max-height: 480px;
+}
+
+.max-h-20 {
+  max-height: 20rem;
+}
+
+.max-w-20 {
+  max-width: 20rem;
+}
+
+.max-h-12 {
+  max-height: 12rem;
+}
+
+.max-h-6 {
+  max-height: 6rem;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.justify {
+  text-align: justify;
+}
+
+/* Própio */
+
+.mat-grid-tile-content {
+  align-items: normal !important;
+  justify-content: baseline !important;
+  text-align: justify;
+}
+
+.budega {
+  align-items: normal !important;
+  justify-content: baseline !important;
+  text-align: justify;
+}
+
+.imagem {
+  border-radius: 5%;
+  border-style: solid;
+  border-color: #a0a0a0;
+  border-width: 0.1px;
+  width: 100%;
+  height: auto;
+}
+
+.example-list-wrapping {
+  max-width: 500px;
+}
+
+.mat-list-item {
+  min-height: 45px;
+  height: inherit !important;
+}
+
+/* .mat-grid-tile {
+  max-height: 500px;
+  height: 100%;
+} */
+
+/* app-evento-dialog {
+  max-height: 500px;
+  height: auto;
+} */

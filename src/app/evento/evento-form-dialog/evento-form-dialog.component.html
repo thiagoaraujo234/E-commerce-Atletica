@@ -1,0 +1,231 @@
+<h1 mat-dialog-title class="center">Cadastro de Evento</h1>
+<form [formGroup]="formEvento">
+  <button style="width: 100%;" mat-button color="primary" (click)="fileInput.click()">
+    <!-- <mat-icon>image_search</mat-icon> -->
+    <div class="imgcontainer">
+      <img *ngIf="preview" [src]="preview" class="max-h-7">
+      <img *ngIf="!preview && data.nomeImagem" [src]="getImagem(data.nomeImagem)" class="max-h-7">
+      <img *ngIf="!preview && !data.nomeImagem" src="assets/images/default_evento.png" class="max-h-7">
+    </div>
+  </button>
+
+  <input #fileInput formControlName="imagemFile" hidden type="file" accept="image/*"
+    (change)="handleFile($event.target)">
+  <table class="w-full">
+    <tr>
+      <td class="mr-3">
+        <div mat-dialog-content>
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Nome</mat-label>
+            <input cdkFocusInitial matInput formControlName="nome">
+            <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+              <div *ngIf="nome.errors?.['required']">
+                Campo obrigatório.
+              </div>
+              <div *ngIf="nome.errors?.['minlength']">
+                Minimo de 2.
+              </div>
+            </mat-error>
+            <mat-icon matPrefix>person_outline</mat-icon>
+          </mat-form-field>
+        </div>
+      </td>
+      <td>
+        <div mat-dialog-content>
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Data</mat-label>
+            <input type="date" formControlName="data" matInput>
+            <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+              <div *ngIf="nome.errors?.['required']">
+                Campo obrigatório.
+              </div>
+            </mat-error>
+            <!-- <mat-icon matPrefix>calendar_today</mat-icon> -->
+          </mat-form-field>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Descricao</mat-label>
+      <textarea maxlength="255" matInput formControlName="descricao"></textarea>
+      <mat-icon matPrefix>description</mat-icon>
+      <mat-hint align="end">{{formEvento.value["descricao"].length}} / 255</mat-hint>
+    </mat-form-field>
+  </div>
+</form>
+<table>
+  <tr>
+    <td>
+      <div mat-dialog-content>
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Editar Endereco</mat-label>
+          <mat-select [(ngModel)]="endereco">
+            <mat-option *ngIf="data.endereco == null || data.endereco.length == 0" [value]="null">
+              Não possui endereço
+            </mat-option>
+            <mat-option *ngFor="let endereco of formEvento.controls['endereco'].value" [value]="endereco">
+              {{ endereco.logradouro }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <button mat-icon-button color="primary" (click)="editEndereco()"><mat-icon>edit</mat-icon></button> |
+      <button mat-icon-button color="warn" (click)="removeEndereco()"><mat-icon>remove_circle</mat-icon></button>
+    </td>
+  </tr>
+</table>
+
+<mat-expansion-panel [expanded]="panelOpenStateAtletica == true" (opened)="openAtletica()"
+  (closed)="panelOpenStateAtletica = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Atleticas
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <table class="w-full" cellspacing="0">
+    <p>
+      <tr>
+        <td><mat-form-field><mat-label>Adcionar Atletica</mat-label><input matInput
+              [(ngModel)]="novaAtletica" /></mat-form-field></td>
+        <td><button (click)="adcionaAtletica()" mat-icon-button color="primary"><mat-icon>add</mat-icon></button></td>
+      <tr>
+    </p>
+
+    <p *ngFor="let atletica of data.atleticasParticipantes">
+      <tr>
+        <td>{{ atletica }}</td>
+        <td><button mat-icon-button color="warn" (click)="removeAtletica(atletica)"><mat-icon>remove</mat-icon></button>
+        </td>
+      </tr>
+    </p>
+  </table>
+</mat-expansion-panel>
+
+<mat-expansion-panel [expanded]="panelOpenStateEsporte == true" (opened)="openEsporte()"
+  (closed)="panelOpenStateEsporte = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Esportes
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <table class="w-full">
+    <p>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Adcionar Esporte</mat-label>
+            <mat-select matInput [(ngModel)]="novoEsporte">
+              <mat-option *ngFor="let esporte of esportes" [value]="esporte">
+                {{ esporte.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td><button (click)="adcionaEsporte()" mat-icon-button color="primary"><mat-icon>add</mat-icon></button></td>
+      </tr>
+    </p>
+
+    <p *ngFor="let esporte of data.esportes">
+      <tr>
+        <td>{{ esporte.nome }}</td>
+        <td><button mat-icon-button color="warn" (click)="removeEsporte(esporte)"><mat-icon>remove</mat-icon></button>
+        </td>
+      </tr>
+   </p>
+  </table>
+</mat-expansion-panel>
+
+<mat-expansion-panel [expanded]="panelOpenStateEndereco == true" (opened)="openEndereco()" (closed)="resetEndereco()">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Endereço
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="formEndereco">
+    <table class="w-full">
+      <tr>
+        <td class="mr-3">
+          <div mat-dialog-content>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>CEP</mat-label>
+              <input matInput mask="00000 - 000" formControlName="cep">
+              <mat-icon matPrefix>place</mat-icon>
+              <mat-error *ngIf="enderecoCep.invalid && (enderecoCep.dirty || enderecoCep.touched)">
+                <div *ngIf="enderecoCep.errors?.['required']">
+                  Campo obrigatório.
+                </div>
+                <div *ngIf="enderecoCep.errors?.['minlength'] || enderecoCep.errors?.['maxlength']">
+                  Esse campo deve ter exatamente 11 digitos
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+
+        <td>
+          <div mat-dialog-content>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Logradouro</mat-label>
+              <input matInput formControlName="logradouro">
+              <mat-icon matPrefix>navigation</mat-icon>
+              <mat-error *ngIf="enderecoLogradouro.invalid && (enderecoLogradouro.dirty || enderecoLogradouro.touched)">
+                <div *ngIf="enderecoLogradouro.errors?.['required']">
+                  Campo obrigatório.
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div mat-dialog-content>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>numero</mat-label>
+              <input type="number" matInput formControlName="numero">
+              <mat-icon matPrefix>looks_one</mat-icon>
+              <mat-error *ngIf="enderecoNumero.invalid && (enderecoNumero.dirty || enderecoNumero.touched)">
+                <div *ngIf="enderecoNumero.errors?.['required']">
+                  Campo obrigatório.
+                </div>
+                <div *ngIf="enderecoNumero.errors?.['min']">
+                  Informe um valor valido
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+
+        <td>
+          <div mat-dialog-content formGroupName="cidade">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Cidade</mat-label>
+              <input cdkFocusInitial matInput formControlName="nome" readonly="true">
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="openConsultaCidadeDialog()">
+                <mat-icon>search</mat-icon>
+              </button>
+              <mat-error *ngIf="enderecoCidadeNome.invalid && (enderecoCidadeNome.dirty || enderecoCidadeNome.touched)">
+                <div *ngIf="enderecoCidadeNome.errors?.['required']">
+                  Campo obrigatório.
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+
+        <button mat-raised-button [disabled]="formEndereco.invalid" (click)="salvarEndereco()">Salvar Endereco</button>
+      </tr>
+    </table>
+  </form>
+</mat-expansion-panel>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button (click)="submit()" color="primary">Salvar</button>
+  <button mat-raised-button (click)="onCancel()">Cancelar</button>
+</div>

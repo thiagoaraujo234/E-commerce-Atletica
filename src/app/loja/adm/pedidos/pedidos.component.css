@@ -1,0 +1,42 @@
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.main-box {
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px;
+    border-color: lightgray;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.filtro-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filtro {
+    width: 500px;
+}
+
+.tabela {
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagem {
+    width: 100px;
+    height: 100px;
+}
+
+th {
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+.main-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 50px;
+}
+
+.ativo{
+  color: #c21a8f;
+  border: solid 1px;
+  border-color: #c21a8f;
+}

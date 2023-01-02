@@ -1,0 +1,61 @@
+
+<div class="titulo">
+  <app-navbar></app-navbar>
+  <h2>Pedidos</h2>
+</div>
+<div class="main-box">
+    <div class="filtro-box">
+        <mat-form-field appearance="outline" class="filtro">
+            <mat-label>Filtro</mat-label>
+            <input matInput autocomplete="off" (keyup)="applyFilter($event)" placeholder="Digite o email do cliente" #input>
+        </mat-form-field>
+    </div>
+    <table mat-table [dataSource]="pedidos" class="tabela">
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let data"> {{data.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="endereco">
+            <th mat-header-cell *matHeaderCellDef> Endereço </th>
+            <td mat-cell *matCellDef="let data"> {{data.endereco}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeProduto">
+            <th mat-header-cell *matHeaderCellDef> Nome do produto </th>
+            <td mat-cell *matCellDef="let data"> {{data.nomeProduto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="preco">
+            <th mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let data"> {{data.preco}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let data"> {{data.quantidade}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipoProduto">
+            <th mat-header-cell *matHeaderCellDef> Tipo do produto </th>
+            <td mat-cell *matCellDef="let data"> {{data.tipoProduto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let data"> {{data.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef> Ação </th>
+            <td mat-cell *matCellDef="let data">
+                <button mat-stroked-button (click)="enviarPedido(data)" disabled="{{data.status == 'enviado' || data.status == 'cancelado'}}">Enviado</button>
+                <button mat-stroked-button (click)="cancelarPedido(data)" disabled="{{data.status == 'enviado' || data.status == 'cancelado'}}">cancelar</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colunas; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+    </table>
+</div>

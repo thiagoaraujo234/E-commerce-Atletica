@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-toolbar>
+        <span class="toolbar-center">Cadastro de Estado</span>
+    </mat-toolbar>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="legacy" style="width: 100%">
+                <mat-label>Nome</mat-label>
+                <input 
+                    matInput 
+                    placeholder="Informe o nome do estado"
+                    formControlName="nome">
+            </mat-form-field>
+            <mat-form-field appearance="legacy" style="width: 100%">
+                <mat-label>Sigla</mat-label>
+                <input 
+                    matInput 
+                    placeholder="Informe a sigla do estado"
+                    formControlName="sigla">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="toolbar-center">
+        <button 
+            mat-raised-button 
+            color="primary" 
+            style="width: 100px ;"
+            (click)="onSave()">Salvar
+        </button>
+        <button 
+            mat-raised-button 
+            style="width: 100px ;" 
+            (click)="onCancel()">Cancelar
+        </button>
+    </mat-card-actions>
+</mat-card>

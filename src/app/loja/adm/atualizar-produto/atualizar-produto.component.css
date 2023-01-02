@@ -1,0 +1,93 @@
+.box-main {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+}
+@media screen and (max-width: 999px) {
+    .box-main {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 599px) {
+    .box-main {
+        width: 400px;
+    }
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 10px 2rem 10px;
+}
+
+.box-imagem {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 100px;
+}
+
+.titulo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.acoes {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.botao-salvar {
+    color: green;
+    border: solid 1px;
+    border-color: green;
+}
+
+.botao-cancelar {
+    color: red;
+    border: solid 1px;
+    border-color: red;
+}
+
+.descricao {
+    width: 700px;
+}
+
+.input-p {
+    width: 100px;
+}
+
+.input-m {
+    width: 200px;
+}
+
+.input-g {
+    width: 300px;
+}
+@media screen and (max-width: 350px) {
+    .input-g {
+        width: 200px;
+    }
+}
+
+.foto-produto {
+    width: 200px;
+    height: auto;
+}
+.botao-imagem {
+    width: 200px;
+    height: auto;
+    border: none;
+}

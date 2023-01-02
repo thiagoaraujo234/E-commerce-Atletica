@@ -1,0 +1,15 @@
+<section class="container">
+  <header class="header d-flex">
+    <h2 class="ff-inter cor">Produtos Relacionados</h2>
+  </header>
+  <div class="mural" *ngIf="listaProdutos.length > 0, else semProdutos">
+    <div *ngFor="let produto of listaProdutos">
+      <app-produto [produto]="produto"></app-produto>
+    </div>
+  </div>
+</section>
+<ng-template #semProdutos>
+  <div class="ff-inter sem-produtos">
+    <p>Ainda não há produtos relacionados!</p>
+  </div>
+</ng-template>

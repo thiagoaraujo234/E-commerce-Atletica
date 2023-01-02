@@ -1,0 +1,56 @@
+<mat-card>
+
+    <mat-toolbar>
+        <span class="toolbar-center">Parceiros</span>
+        <button mat-icon-button color="accent">
+            <mat-icon (click)="onAdd()">add_box</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Quarteto Supermercado" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="parceiros" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="imageUrl">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let data">
+              <div class="imgcontainer">
+                <img *ngIf="data.nomeImagem" width="90%" [src]="getImagem(data.nomeImagem)" >
+                <img *ngIf="!data.nomeImagem" width="90%" src="assets/images/default_user.jpg" >
+              </div>
+            </td>
+          </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let data"> {{data.nome}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef> Dscrição </th>
+            <td mat-cell *matCellDef="let data"> {{data.descricao}} </td>
+        </ng-container>
+
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef> Ação </th>
+            <td mat-cell *matCellDef="let data">
+                <button mat-icon-button color="primary">
+                    <mat-icon (click)="onEdit(data)">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn">
+                    <mat-icon (click)="onDelete(data)">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+</mat-card>

@@ -1,0 +1,56 @@
+<div *ngIf="evento" class="justify">
+  <table>
+    <tr>
+      <td>
+        <div>
+          <img *ngIf="evento.nomeImagem != null" mat-card-image [src]="getImagem(evento.nomeImagem)" alt="Photo of a Shiba Inu" class="imagem max-w-20">
+          <img *ngIf="evento.nomeImagem == null" mat-card-image src="assets/images/default_evento.png" alt="Photo of a Shiba Inu" class="imagem max-w-20">
+        </div>
+      </td>
+      <td>
+        <mat-list class="example-list-wrapping">
+          <h3>{{ evento.nome }}</h3>
+          <mat-list-item class="pb-1">{{ evento.descricao }}</mat-list-item>
+          <mat-list-item lines="1">
+            <span matListItemTitle> Data: </span> 
+            <span>{{ formataData(evento.data) }}</span>
+          </mat-list-item>
+          <mat-list-item> 
+            Ateltica(s): 
+            <span style="display: inline;" *ngIf="evento.atleticasParticipantes == null"> Nenhuma </span>
+            <span *ngFor="let atletica of evento.atleticasParticipantes"> {{ atletica }}, </span>
+          </mat-list-item>
+          <mat-list-item> Esporte(s): 
+            <span *ngIf="evento.esportes == null"> Nenhum </span>
+            <span *ngFor="let esporte of evento.esportes"> {{ esporte.nome }}, </span>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </td>
+    </tr>
+  </table>
+
+  <mat-list *ngIf="evento.endereco.length == 1" class="example-list-wrapping">
+    <h3>Endereço</h3>
+    <div >
+      <mat-list-item><span class="w-10"></span>Logradouro: {{ evento.endereco[0].logradouro }}</mat-list-item>
+      <mat-list-item><span class="w-10"></span>Numero: {{ evento.endereco[0].numero }}</mat-list-item>
+      <mat-list-item><span class="w-10"></span>Cidade: {{ evento.endereco[0].cidade.nome }}-{{ evento.endereco[0].cidade.estado.sigla }}</mat-list-item>
+      <mat-list-item><span class="w-10"></span>CEP: {{ evento.endereco[0].cep }}</mat-list-item>
+    </div>
+  </mat-list>
+
+  <div *ngIf="evento.endereco.length > 1">
+    <mat-expansion-panel *ngFor="let endereco of evento.endereco">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ endereco.logradouro }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Numero {{ endereco.numero }},</p>
+      <p>Cidade {{ endereco.cidade.nome }}-{{endereco.cidade.estado.sigla}},</p>
+      <p>CEP: {{ endereco.cep }}</p>
+    </mat-expansion-panel>
+  </div>
+  <h3 *ngIf="!evento.endereco || evento.endereco.length < 1">Este evento não possui endereço</h3>
+</div>

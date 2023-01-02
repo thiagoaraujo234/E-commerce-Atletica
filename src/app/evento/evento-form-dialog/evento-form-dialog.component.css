@@ -1,0 +1,72 @@
+.block {
+  display: block;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mw-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mw-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.border {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.rounded-t-8 {
+  border-radius: 8px ;
+}
+
+.hidden {
+  display: none;
+}
+
+.max-h-7 {
+  max-height: 7rem;
+}
+
+.justify {
+  text-align: justify;
+}
+
+/* Própio */
+
+.example-full-width {
+  width: 100%;
+}
+
+.cdk-overlay-pane {
+  max-height: 95vh !important;
+  overflow-y: scroll;
+}
+
+

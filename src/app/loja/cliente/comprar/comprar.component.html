@@ -1,0 +1,68 @@
+<div class="container">
+
+
+  <h2 class="ff-inter nome-produto">{{produto.nome}}</h2>
+  <div class="mural">
+  <mat-card class="example-card">
+    <img class="img-produto" *ngIf="produto.imagem == '' || produto.imagem == undefined" src="assets/imagens/default-placeholder.png" alt="Foto do produto" >
+    <img class="img-produto" *ngIf="produto.imagem" [src]="getImagem(produto.imagem)" alt="Foto do produto" >
+    <div class="botoes-img">
+      <button mat-icon-button><mat-icon>favorite</mat-icon></button>
+    </div>
+    <div class="oferta" *ngIf="produtoPromocao()">
+      <p><b>{{produto.desconto}}% <br> OFF</b></p>
+    </div>
+  </mat-card>
+
+
+    <div class="ff-inter aba-compra">
+      <p>Vendido e entregue por: Atlética Sabotagem | <span [ngClass]="produtoStatusCor()">{{produtoEmEstoqueString()}}</span></p>
+      <p *ngIf="temPrecoInicial() && produtoPromocao()"><s>R$ {{produto.preco.toFixed(2)}}</s></p>
+      <p class="preco">R$ {{calculaDesconto()}}</p>
+      <p>Em até 12X de {{(produto.preco/12).toFixed(2)}} sem juros no cartão</p>
+      <p (click)='openDialog()'><u>Ver formas de pagamento</u></p>
+      <p>Marca: <b>{{produto.marca}}</b></p>
+
+      <div class="mural-tipo-quant" *ngIf="produtoEmEstoque()">
+        <div class="div-ajuste" *ngIf="listaTipos.length > 0">
+          <p><b>Variaçoes:</b></p>
+          <mat-radio-group
+          class="mural-tipo"
+          [(ngModel)]="tipoDoProduto">
+            <mat-radio-button *ngFor="let tipo of listaTipos" [value]="tipo">
+              {{tipo.descricao}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <button mat-stroked-button class="botao-comprar" [disabled]="!produtoEmEstoque()" (click)="comprarDialog()"><mat-icon>shopping_cart</mat-icon> COMPRAR</button>
+
+      <div class="cep">
+      <p>Calcular frete:</p>
+      <mat-form-field appearance="outline">
+        <mat-label class="input-cep">Inserir CEP</mat-label>
+        <input matInput autocomplete="off">
+      </mat-form-field>
+      <button mat-stroked-button class="botao-cep">OK</button>
+      </div>
+
+    </div>
+  </div>
+
+
+<div class="produto-detalhes">
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false" style="border-radius: 10px;">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b class="ff-inter">Descrição do produto</b>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="ff-inter">{{produto.descricao}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+  <app-produtos-relacionados></app-produtos-relacionados>
+</div>

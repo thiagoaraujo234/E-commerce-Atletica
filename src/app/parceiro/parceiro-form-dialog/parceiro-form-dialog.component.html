@@ -1,0 +1,51 @@
+<h1 mat-dialog-title class="center">Cadastro de Parceiro</h1>
+<form [formGroup]="formParceiro" >
+
+  <button
+    style="width: 100%;"
+    mat-button
+    color="primary"
+    (click)="fileInput.click()">
+      <!-- <mat-icon>image_search</mat-icon> -->
+      <div class="imgcontainer">
+        <img mat-card-image *ngIf="data.nomeImagem"  [src]="getImagem(data.nomeImagem)">
+        <img mat-card-image *ngIf="!data.nomeImagem"  src="assets/images/default_parceiro.png">
+      </div>
+  </button>
+
+    <input
+    #fileInput
+    formControlName="imagemFile"
+    hidden
+    type="file"
+    accept="image/*"
+    (change)="handleFile($event.target)">
+
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Nome</mat-label>
+          <input
+              cdkFocusInitial
+              matInput
+              formControlName="nome">
+              <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+                  <div *ngIf="nome.errors?.['required']">
+                    Campo obrigatório.
+                  </div>
+              </mat-error>
+      </mat-form-field>
+  </div>
+
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Descricao</mat-label>
+        <input cdkFocusInitial matInput formControlName="descricao" >
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" (click)="submit()" >Salvar</button>
+  <button mat-raised-button (click)="onCancel()">Cancelar</button>
+</div>
+
+</form>

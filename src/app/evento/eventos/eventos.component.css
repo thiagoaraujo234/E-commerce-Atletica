@@ -1,0 +1,133 @@
+.block {
+  display: block;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mw-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mw-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.border {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.rounded-t-8 {
+  border-radius: 8px ;
+}
+
+.hidden {
+  display: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-h-60 {
+  max-height: 240px;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.shadow-atletica {
+  box-shadow: rgba(194, 26, 143, 0.2);
+  /* box-shadow: #c21a8f ; */
+}
+
+/* Própio */
+
+.mat-tab-label {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 8px ;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.mat-card-header {
+  padding-top: 15px;
+}
+
+.mat-card {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  /* background-color: #e0e0e0; */
+  border-style: solid;
+  border-width: 0.01px;
+  border-color: #a0a0a048;
+}
+
+.text-atletica {
+  color: #c21a8f;
+}
+
+/* .mat-card:hover {
+  opacity: 70%;
+  cursor: pointer;
+} */
+
+.container-image {
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  background-color: rgba(0, 0, 0, 0.233);
+}
+
+.toolbar-center {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  display: block;
+  max-height: 230px;
+  max-width: 100%;
+  width: auto !important;
+}
+
+.footer{
+  z-index: 1;
+}

@@ -1,0 +1,6 @@
+<h1 mat-dialog-title class="center"> {{data.title}} </h1>
+
+<div mat-dialog-actions align="center">
+    <button mat-raised-button color="warn" (click)="onConfirm()">{{data.confirmButtonLabel}}</button>
+    <button mat-raised-button (click)="onCancel()" cdkFocusInitial>{{data.cancelButtonLabel}}</button>
+</div>

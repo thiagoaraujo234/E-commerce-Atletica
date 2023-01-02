@@ -1,0 +1,24 @@
+<h1 mat-dialog-title class="center">Cadastro de Cidade</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Nome</mat-label>
+    <input cdkFocusInitial matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <input [(ngModel)]="data.estado" matInput [matAutocomplete]="auto" (ngModelChange)="onFilter($event)">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of estados | async" [value]="option">
+        {{ option.nome }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" [mat-dialog-close]="data">Salvar</button>
+  <button mat-raised-button (click)="onCancel()">Cancelar</button>
+</div>

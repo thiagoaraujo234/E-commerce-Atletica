@@ -1,0 +1,246 @@
+<div class="banner_home">
+  <img src="assets/images/banner.png" class="img-banner">
+</div>
+<p>
+  <mat-toolbar>
+    <button mat-icon-button matTooltip="Abrir Instagram" onclick="window.location.href='https://www.instagram.com/'"
+      aria-label="Example icon-button with a heart icon" style="margin-left: 15px">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOkZ3889SWHI52sREpbGldVNQ5ZOYBa1J6Pg&usqp=CAU"
+        width="27" height="27">
+    </button>
+    <button mat-icon-button matTooltip="Abrir Twitter" onclick="window.location.href='https://www.twitter.com/'"
+      aria-label="Example icon-button with a heart icon" style="margin-left: 15px">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" width="27" height="27">
+    </button>
+    <span class="example-spacer"></span>
+    <label> Telefone: (63)99999-9999 </label>
+  </mat-toolbar>
+</p>
+
+<mat-tab-group>
+  <mat-tab label="PRODUTOS">
+    <button mat-button style="color: #c21a8f;" routerLink="/loja" routerLinkActive="botao-ativo">Ver todos</button><br>
+
+    <mat-card *ngIf="!(listaProdutos)  || parceiros.length < 1" class="shadow-atletica">
+      <mat-card-header>
+        <mat-card-title>Nenhum Produto encontrado</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Tente recarregar a pagina ou testar sua conneção com a internet.</p>
+        <p></p>
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>  
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+    </mat-card>
+
+    <mat-card *ngFor="let produto of listaProdutos; let index = index" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ produto.nome }}</mat-card-title>
+        <mat-card-subtitle>{{ produto.preco }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="items-center container-image">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="produto.imagem" [src]="getImagemProduto(produto.imagem)" alt="Photo of a Shiba Inu">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="!produto.imagem" src="assets/images/default_produto.png" >
+      </div>
+      <mat-card-content>
+        <p class="justify h-100 w-300">
+          {{ produto.descricao }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <!-- <section class="container">
+      <header class="header d-flex">
+        <h2 class="ff-inter cor">Produtos</h2>
+      </header>
+      <div class="mural" *ngIf="listaProdutos.length > 0, else semProdutos">
+        <div *ngFor="let produto of listaProdutos">
+          <app-produto [produto]="produto"></app-produto>
+        </div>
+      </div>
+    </section>
+    <ng-template #semProdutos>
+      <div class="ff-inter sem-produtos">
+        <p>Ainda não há produtos cadastrados!</p>
+      </div>
+    </ng-template> -->
+    <!--card produto--->
+    <!-- <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Camisetas</mat-card-title>
+        <mat-card-subtitle>Promoção</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+        src="https://images.tcdn.com.br/img/img_prod/740066/camisa_beisebol_majestic_los_angeles_dodgers_azul_branco_741_1_20200109131835.jpg"
+        alt="Produtos">
+      <mat-card-content>
+        <p>Escrever algo</p>
+      </mat-card-content>
+    </mat-card> -->
+    <!--card produto--->
+    <!--card produto--->
+    <!-- <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Tirantes</mat-card-title>
+        <mat-card-subtitle>Promoção</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+        src="https://tirantes.com.br/wp-content/uploads/2019/04/Tirante-caneca-20mm-terminal-argola.jpg"
+        alt="Produtos">
+      <mat-card-content>
+        <p>
+          escrever algo
+        </p>
+      </mat-card-content>
+    </mat-card> -->
+    <!--card produto--->
+    <!--card produto--->
+    <!-- <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Canecas</mat-card-title>
+        <mat-card-subtitle>Promoção</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+        src="https://71468.cdn.simplo7.net/static/71468/sku/criativos-canecas-de-aluminio-500ml-historia-pra-contar-1649703463643.jpg"
+        alt="Produtos">
+      <mat-card-content>
+        <p>
+          escrever algo
+        </p>
+      </mat-card-content>
+    </mat-card> -->
+    <!--card produto--->
+
+  </mat-tab>
+
+  <mat-tab label="EVENTOS">
+    <button mat-button style="color: #c21a8f;" routerLink="/evento" routerLinkActive="botao-ativo">Ver todos</button><br>
+
+    <mat-card *ngIf="!(eventos) || eventos.length < 1" class="shadow-atletica">
+      <mat-card-header>
+        <mat-card-title>Nenhum evento encontrado</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Tente recarregar a pagina ou testar sua conneção com a internet.</p>
+        <p></p>
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>  
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+    </mat-card>
+
+    <!--card produto--->
+    <mat-card *ngFor="let evento of eventos; let index = index" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ evento.nome }}</mat-card-title>
+        <mat-card-subtitle>{{ formataData(evento.data) }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="items-center container-image">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="evento.nomeImagem" [src]="getImagemEvento(evento.nomeImagem)" alt="Photo of a Shiba Inu">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="!evento.nomeImagem" src="assets/images/default_evento.png" >
+      </div>
+      <mat-card-content>
+        <p class="justify h-100 w-300">
+          {{ evento.descricao }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button class="text-atletica" (click)="onChange(index)">Ver mais</button>
+      </mat-card-actions>
+    </mat-card>
+    <!--card produto--->
+
+  </mat-tab>
+  <mat-tab label="PARCEIROS">
+
+    <button mat-button style="color: #c21a8f;" routerLink="/parceiro" routerLinkActive="botao-ativo">Ver todos</button><br>
+
+    <mat-card *ngIf="!(parceiros) || parceiros.length < 1" class="shadow-atletica">
+      <mat-card-header>
+        <mat-card-title>Nenhum Parceiro encontrado</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Tente recarregar a pagina ou testar sua conneção com a internet.</p>
+        <p></p>
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>  
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+    </mat-card>
+
+    <!--card produto--->
+    <mat-card *ngFor="let perceiro of parceiros; let index = index" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ perceiro.nome }}</mat-card-title>
+        <mat-card-subtitle>patrocinador</mat-card-subtitle>
+      </mat-card-header>
+      <div class="items-center container-image">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="perceiro.nomeImagem" [src]="getImagemParceiro(perceiro.nomeImagem)" alt="Photo of a Shiba Inu">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="!perceiro.nomeImagem" src="assets/images/default_parceiro.png" >
+      </div>
+      <mat-card-content>
+        <p class="justify h-100 w-300">
+          {{ perceiro.descricao }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <!--card produto--->
+  </mat-tab>
+  <mat-tab label="PLANOS">
+
+    <!--card produto--->
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Associação Semestral</mat-card-title>
+        <mat-card-subtitle>DE<s>R$89,90</s> POR R$49,90</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+        src="https://produto-cheers.s3.amazonaws.com/media/seller/profile/1debb4d24044f56fbd5fa2f5a6f1ab3049f942373d5580ccb7f275e599709af5.jpeg"
+        alt="Associação">
+      <mat-card-content>
+        <p>Valor promocinal valido apenas para renovação</p>
+      </mat-card-content>
+      <mat-card-actions style="margin-left: 35%;">
+        <button mat-flat-button color="primary">Associar</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+    <!--card produto--->
+
+  </mat-tab>
+  <mat-tab label="ESPORTES">
+    <button mat-button style="color: #c21a8f;" routerLink="/esporte" routerLinkActive="botao-ativo">Ver todos</button><br>
+
+    <mat-card *ngIf="!(esportes) || esportes.length < 1" class="shadow-atletica">
+      <mat-card-header>
+        <mat-card-title>Nenhum evento encontrado</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Tente recarregar a pagina ou testar sua conneção com a internet.</p>
+        <p></p>
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>  
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+    </mat-card>
+    <!--card produto--->
+    <mat-card *ngFor="let esporte of esportes" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ esporte.nome }}</mat-card-title>
+        <mat-card-subtitle>{{ esporte.modalidade }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="items-center container-image">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="esporte.nomeImagem" [src]="getImagemEsporte(esporte.nomeImagem)" alt="Photo of a Shiba Inu">
+        <img mat-card-image class="example-header-image mx-auto max-h-175 w-auto center" *ngIf="!esporte.nomeImagem" src="assets/images/download.jpeg" >
+      </div>
+    </mat-card>
+    <!--card produto--->
+
+  </mat-tab>
+</mat-tab-group>

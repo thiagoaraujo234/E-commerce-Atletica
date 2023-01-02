@@ -1,0 +1,29 @@
+<div class="produto modelo produto-tamanho ff-roboto-mono">
+  <div class="oferta" *ngIf="produto.desconto">
+    <p class="ff-inter"><b>{{produto.desconto}}%<br>OFF</b></p>
+  </div>
+  <div class="center" (click)="expandir()">
+    <div *ngIf="temImagem()">
+      <img [src]="getImagem(produto.imagem)" alt="Imagem do produto" class="foto-produto">
+    </div>
+    <div *ngIf="!temImagem()">
+      <img src="assets/imagens/default-placeholder.png" alt="Imagem do produto" class="foto-produto">
+    </div>
+  </div>
+  <div *ngIf="produto.quantidade < 1" class="sem-estoque">
+    <p class="ff-inter"><b>SEM ESTOQUE</b></p>
+  </div>
+  <div>
+    <p class="nome"><b>{{ produto.nome }}</b></p>
+    <p class="preco-oferta" *ngIf="produto.desconto"><s>R$ {{ produto.preco }}</s></p>
+    <p class="preco"><b>R$ {{ calculaDesconto() }}</b></p>
+  </div>
+  <div class="acoes">
+    <button class="botao-favoritar" (click)="adcFavorite(produto)">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button class="botao-comprar" (click)="adcCarrinho(produto)">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
+</div>

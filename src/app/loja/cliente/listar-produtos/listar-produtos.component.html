@@ -1,0 +1,22 @@
+<section class="container">
+  <header class="header d-flex">
+    <app-navbar></app-navbar>
+    <h2 class="ff-inter cor">Produtos</h2>
+    <div *ngIf="listaProdutos.length > 0">
+      <mat-form-field appearance="outline" class="filtro">
+        <mat-label>Filtro</mat-label>
+        <input matInput autocomplete="off" (keyup)="applyFilter($event)" placeholder="Ex. caneca" #input>
+      </mat-form-field>
+    </div>
+  </header>
+  <div class="mural" *ngIf="listaProdutos.length > 0, else semProdutos">
+    <div *ngFor="let produto of listaProdutos">
+      <app-produto [produto]="produto"></app-produto>
+    </div>
+  </div>
+</section>
+<ng-template #semProdutos>
+  <div class="ff-inter sem-produtos">
+    <p>Ainda não há produtos cadastrados!</p>
+  </div>
+</ng-template>
