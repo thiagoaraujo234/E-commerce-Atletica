@@ -1,6 +1,6 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
-## Passo a passo de como executar o projete
+## Passo a passo de como executar o projeto
 
 Primeiro instale o Node.js depois execute o comando no PowerShell dentro da pasta do projeto
 
